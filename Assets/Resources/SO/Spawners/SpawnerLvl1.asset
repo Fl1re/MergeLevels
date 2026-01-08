@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 1
   SpawnTable:
-  - Item: {fileID: 11400000, guid: 58c3dd135c4ec2b45a7336d2dca6bbfa, type: 2}
+  - Type: 0
+    Config: {fileID: 11400000, guid: 58c3dd135c4ec2b45a7336d2dca6bbfa, type: 2}
     Chance: 0.9
-  - Item: {fileID: 11400000, guid: 98139243f1f7cf64c9a465edc5e71c9a, type: 2}
+  - Type: 0
+    Config: {fileID: 11400000, guid: 98139243f1f7cf64c9a465edc5e71c9a, type: 2}
     Chance: 0.1
+  - Type: 1
+    Config: {fileID: 11400000, guid: e295fc52b1d580f4ba780e58ca804b58, type: 2}
+    Chance: 0.3

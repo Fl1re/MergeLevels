@@ -238,4 +238,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b3b14d5386504cafdb487e15fab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerName: {fileID: 495506538934936632}
+  entityName: {fileID: 495506538934936632}

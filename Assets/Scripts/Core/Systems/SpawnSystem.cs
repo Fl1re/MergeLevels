@@ -9,26 +9,40 @@ public class SpawnSystem : MonoBehaviour, ISpawnService
     {
         if (!field.TryGetFreeCell(out var cell)) return;
 
-        ItemConfig config = Roll(spawner.Config.SpawnTable);
-
+        SpawnChance entry = Roll(spawner.Config.SpawnTable);
         var factory = Services.Get<IEntityFactory>();
-        var item = factory.CreateItem(config);
 
-        cell.SetEntity(item);
+        FieldEntity entity = entry.Type switch
+        {
+            SpawnEntityType.Item => factory.CreateItem((ItemConfig)entry.Config),
+            SpawnEntityType.NonMergeItem => factory.CreateNonMergeable((NonMergeableItemConfig)entry.Config),
+            _ => null
+        };
+
+        if (entity != null)
+            cell.SetEntity(entity);
     }
 
-    private ItemConfig Roll(List<SpawnChance> table)
+    private SpawnChance Roll(List<SpawnChance> table)
     {
-        float roll = Random.value;
+        float total = 0f;
+
+        for (int i = 0; i < table.Count; i++)
+            total += table[i].Chance;
+
+        if (total <= 0f)
+            return null;
+
+        float roll = Random.value * total;
         float sum = 0f;
 
         for (int i = 0; i < table.Count; i++)
         {
             sum += table[i].Chance;
             if (roll <= sum)
-                return table[i].Item;
+                return table[i];
         }
 
-        return table[^1].Item;
+        return table[^1];
     }
 }

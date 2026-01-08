@@ -4,6 +4,7 @@ public class EntityFactory : MonoBehaviour, IEntityFactory
 {
     [SerializeField] private ItemEntity itemPrefab;
     [SerializeField] private SpawnerEntity spawnerPrefab;
+    [SerializeField] private NonMergeableItemEntity nonMergeableItemPrefab;
 
     public FieldEntity CreateItem(ItemConfig config)
     {
@@ -18,6 +19,13 @@ public class EntityFactory : MonoBehaviour, IEntityFactory
         spawner.Initialize(config);
         return spawner;
     }
+    
+    public FieldEntity CreateNonMergeable(NonMergeableItemConfig config)
+    {
+        var item = Instantiate(nonMergeableItemPrefab);
+        item.Initialize(config);
+        return item;
+    }
 
     public FieldEntity Create(ConfigBase config)
     {
@@ -25,6 +33,8 @@ public class EntityFactory : MonoBehaviour, IEntityFactory
             return CreateItem(itemConfig);
         if (config is SpawnerConfig spawnerConfig)
             return CreateSpawner(spawnerConfig);
+        if (config is NonMergeableItemConfig nm) 
+            return CreateNonMergeable(nm);
         return null;
     }
 }

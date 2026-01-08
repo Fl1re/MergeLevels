@@ -1,7 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public abstract class FieldEntity : MonoBehaviour
 {
+    [SerializeField] protected TMP_Text entityName;
     public int Level { get; protected set; }
     public CellView CurrentCell { get; private set; }
 

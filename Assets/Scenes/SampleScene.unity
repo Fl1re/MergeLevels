@@ -4767,6 +4767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 2588743122958954691, guid: ce13e678290074b4d9b5dc1bf25e6c56, type: 3}
   spawnerPrefab: {fileID: 3539895986557670345, guid: 07a99d6533a3910459761ea0b42c1987, type: 3}
+  nonMergeableItemPrefab: {fileID: 991831692734189906, guid: 24ecdade32ec3134c8cb6d4baf081993, type: 3}
 --- !u!1 &1630262857
 GameObject:
   m_ObjectHideFlags: 0
